@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
+
 [ApiController]
 [Route("artistas")]
 public class Conexion : Controller 
@@ -9,8 +12,9 @@ public class Conexion : Controller
         var client = new MongoClient(CadenasConexion.MONGO_DB);
         var database = client.GetDatabase("Practica2_Nayeli_Frida");
         _artistas = database.GetCollection<Artistas>("cantantes");
+        var list = _artistas.Find(FilterDefinition<Artistas>.Empty).ToList();
 
-        return Ok(_artistas);
+        return Ok(list);
     }
     [HttpGet]
     public ActionResult<List<Artistas>> Get()
