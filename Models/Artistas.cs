@@ -14,4 +14,5 @@ public required string Nombre { get; set; }
 public int Premios { get; set; }
 public DateTime ActivoDesde { get; set; }
 public RedesSociales RedesSociales { get; set; }
+public List<string>? Colaboraciones { get; set; }
 }
